@@ -5,6 +5,9 @@ launchers.
 ## Supported devices
 * Winbond PE-5858-919
 
+## Usage
+* See folder examples
+
 ## TODO
-* Make it a library
+* Add USB initialization to librocket.c
 * Detect the physical axes boundaries to avoid damage
