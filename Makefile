@@ -11,4 +11,4 @@ LDFLAGS = $(LIBS)
 all: rocket_launch
 
 clean:
-	-@rm *~ rocket_launch 2>/dev/null || true
+	-@rm -f *~ rocket_launch
