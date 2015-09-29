@@ -25,6 +25,6 @@ struct rocket_launcher {
 	libusb_device_handle *handle;
 };
 
-static int __winbond_control(struct rocket_launcher *self, unsigned char dir);
+int __winbond_control(struct rocket_launcher *self, unsigned char dir);
 void init_winbond(struct rocket_launcher *winb, libusb_device_handle *handle);
 libusb_device *get_device(libusb_device **devs, int cnt);
