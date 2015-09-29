@@ -4,12 +4,6 @@
 #include <ncurses.h>
 #include "librocket.h"
 
-#define UP    65
-#define DOWN  66
-#define RIGHT 67
-#define LEFT  68
-#define FIRE  '\n'
-
 int __winbond_control(struct rocket_launcher *self, unsigned char dir)
 {
 	int cnt;
