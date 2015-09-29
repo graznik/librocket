@@ -1,4 +1,5 @@
-CFLAGS=-Wall -Werror -I/usr/include/libusb-1.0/ -lusb-1.0 -lncurses
+CFLAGS=-Wall -Werror -I/usr/include/libusb-1.0/
+LDFLAGS=-lusb-1.0 -lncurses
 
 .PHONY: all clean
 
