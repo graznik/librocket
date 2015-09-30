@@ -1,8 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <libusb.h>
 
 /* Winbond PE-5858-919 */
-#define WINBOND_VENDOR_ID 0x0416  /* Winbond */
-#define WINBOND_DEVICE_ID 0x9391  /* PE-5858-919 */
+#define WINBOND_VENDOR_ID (uint16_t)0x0416  /* Winbond */
+#define WINBOND_DEVICE_ID (uint16_t)0x9391  /* PE-5858-919 */
 #define WINBOND_HOLD       0x60
 #define WINBOND_DOWN       0x01
 #define WINBOND_UP         0x02
@@ -21,10 +24,20 @@ struct rocket_launcher {
 	unsigned char cmd_right;
 	unsigned char cmd_fire;
 	int (*control)(struct rocket_launcher *self, unsigned char dir);
-	/* USB device handle */
+	/* USB stuff */
+	uint16_t vendor_id;
+	uint16_t device_id;
+	libusb_context *ctx;
+	libusb_device **devs;
+	libusb_device *dev;
 	libusb_device_handle *handle;
 };
 
-int __winbond_control(struct rocket_launcher *self, unsigned char dir);
-void init_winbond(struct rocket_launcher *winb, libusb_device_handle *handle);
-libusb_device *get_device(libusb_device **devs, int cnt);
+int  init_launcher(struct rocket_launcher *winb);
+void exit_launcher(struct rocket_launcher *winb);
+int  __init_winbond(struct rocket_launcher *winb);
+void __exit_winbond(struct rocket_launcher *winb);
+int  __winbond_control(struct rocket_launcher *self, unsigned char dir);
+libusb_device *__get_device(struct rocket_launcher *self, ssize_t cnt);
+int __init_usb(struct rocket_launcher *rl);
+void  __exit_usb(struct rocket_launcher *rl);
