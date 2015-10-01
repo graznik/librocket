@@ -33,11 +33,8 @@ struct rocket_launcher {
 	libusb_device_handle *handle;
 };
 
-int  init_launcher(struct rocket_launcher *winb);
-void exit_launcher(struct rocket_launcher *winb);
-int  __init_winbond(struct rocket_launcher *winb);
-void __exit_winbond(struct rocket_launcher *winb);
+int  init_launcher(struct rocket_launcher *rl);
+void exit_launcher(struct rocket_launcher *rl);
+void  __init_winbond(struct rocket_launcher *winb, libusb_device *dev);
 int  __winbond_control(struct rocket_launcher *self, unsigned char dir);
-libusb_device *__get_device(struct rocket_launcher *self, ssize_t cnt);
-int __init_usb(struct rocket_launcher *rl);
-void  __exit_usb(struct rocket_launcher *rl);
+int __init_usb_device(struct rocket_launcher *self, ssize_t cnt);
