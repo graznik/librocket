@@ -88,7 +88,6 @@ int __init_usb(struct rocket_launcher *rl)
 {
 	int err = 0;
 	ssize_t cnt;
-	uint8_t bus, addr;
 
 	err = libusb_init(&(rl->ctx));
 	if (err) {
@@ -103,11 +102,6 @@ int __init_usb(struct rocket_launcher *rl)
 		fprintf(stderr, "Error: Unable to detect device\n");
 		goto err_free;
 	}
-
-	bus = libusb_get_bus_number(rl->dev);
-	addr = libusb_get_device_address(rl->dev);
-
-	fprintf(stdout, "Bus %03d Device %03d\n", bus, addr);
 
 	err = libusb_open(rl->dev, &(rl->handle));
 	if (err) {
